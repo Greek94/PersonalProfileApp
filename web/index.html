@@ -1,117 +1,72 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>UiTM Student Profile</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #0B2C5D;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            width: 420px;
-            margin: 50px auto;
-            background: #FFFFFF;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.3);
-        }
-
-        .logo {
-            text-align: center;
-            margin-bottom: 15px;
-        }
-
-        .logo img {
-            width: 120px;
-        }
-
-        h2 {
-            text-align: center;
-            color: #7B1FA2;
-            margin-bottom: 20px;
-        }
-
-        label {
-            font-weight: bold;
-            color: #333333;
-        }
-
-        input, textarea {
-            width: 100%;
-            padding: 8px;
-            margin: 6px 0 15px 0;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-
-        textarea {
-            resize: none;
-        }
-
-        input[type="submit"] {
-            background-color: #7B1FA2;
-            color: white;
-            border: none;
-            font-size: 15px;
-            cursor: pointer;
-            padding: 10px;
-            border-radius: 6px;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #5E1485;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 15px;
-            color: #777;
-            font-size: 12px;
-        }
-    </style>
-</head>
-
-<body>
-
-<div class="container">
-
-    <!-- UiTM Logo -->
-    <div class="logo">
-        <img src="https://korporat.uitm.edu.my/images/download/2019/LogoUiTM.png" alt="UiTM Logo">
-    </div>
-
-    <h2>Student Profile Form</h2>
-
-    <form action="ProfileServlet" method="post">
-        <label>Name</label>
-        <input type="text" name="name" required>
-
-        <label>Student ID</label>
-        <input type="text" name="studentID" required>
-
-        <label>Program</label>
-        <input type="text" name="program">
-
-        <label>Email</label>
-        <input type="email" name="email">
-
-        <label>Hobbies</label>
-        <input type="text" name="hobbies">
-
-        <label>Self Introduction</label>
-        <textarea name="intro" rows="4"></textarea>
-
-        <input type="submit" value="Submit Profile">
-    </form>
-
-    <footer>
-        CSC584 Assignment
-    </footer>
-
-</div>
-
-</body>
+<html lang="en">
+    <head>
+        <title>Student Profile Entry</title>
+        <meta charset="UTF-8">
+        <style>
+            body { 
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+                background-color: #f4f4f9; 
+                display: flex; justify-content: center; 
+                padding-top: 30px; padding-bottom: 30px;
+            }
+            .container { 
+                background: white; padding: 30px; border-radius: 10px; 
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1); width: 400px; 
+                border-top: 5px solid #753895; /* UiTM Purple Accent */
+            }
+            .logo { display: block; margin: 0 auto 10px auto; width: 180px; height: auto; }
+            h2 { text-align: center; color: #012E6F; margin-top: 0; } /* UiTM Dark Blue */
+            
+            label { font-weight: bold; display: block; margin-top: 10px; color: #333; }
+            
+            input[type="text"], input[type="email"], textarea, select { 
+                width: 100%; padding: 10px; margin: 5px 0 10px 0; 
+                border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; 
+            }
+            
+            /* Focus: UiTM Gold Border */
+            input:focus, textarea:focus { outline: none; border: 2px solid #D6C147; }
+            input:invalid:not(:placeholder-shown) { border-color: #e74c3c; background-color: #fce4e4; }
+            
+            input[type="submit"] { 
+                background-color: #753895; /* UiTM Purple */
+                color: white; padding: 10px; border: none; width: 100%; 
+                border-radius: 5px; cursor: pointer; font-size: 16px; font-weight: bold;
+                margin-top: 15px; transition: background 0.3s;
+            }
+            input[type="submit"]:hover { background-color: #52247f; } /* Darker Purple */
+            
+            .hint { font-size: 11px; color: #666; display: block; margin-bottom: 5px; }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <img src="https://korporat.uitm.edu.my/images/download/2019/LogoUiTM.png" alt="UiTM Logo" class="logo">
+            <h2>Student Profile Form</h2>
+            
+            <form action="ProfileServlet" method="POST">
+                <label>Name:</label>
+                <input type="text" name="name" required pattern="[A-Za-z\s\.]+" maxlength="50" title="Alphabets only.">
+                
+                <label>Student ID:</label>
+                <input type="text" name="studentId" required pattern="\d+" maxlength="15" title="Numbers only.">
+                
+                <label>Program:</label>
+                <input type="text" name="program" placeholder="e.g. CS230" required pattern="[A-Za-z0-9\s]+" maxlength="10">
+                
+                <label>Email:</label>
+                <input type="email" name="email" required pattern=".+@.*uitm\.edu\.my" maxlength="50" placeholder="student@student.uitm.edu.my">
+                <span class="hint">* Official UiTM email only</span>
+                
+                <label>Hobbies:</label>
+                <input type="text" name="hobbies" required pattern="[A-Za-z0-9\s,\.]+" maxlength="100" placeholder="Reading, Coding...">
+                
+                <label>Self Introduction:</label>
+                <textarea name="intro" rows="4" required maxlength="250"></textarea>
+                
+                <input type="submit" value="Generate Profile">
+            </form>
+        </div>
+    </body>
 </html>
