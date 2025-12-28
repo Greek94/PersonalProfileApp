@@ -1,35 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Profile Form</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="form-container">
-        <h2>Personal Profile Form</h2>
-        <form action="ProfileServlet" method="POST">
-            <label for="name">Full Name:</label>
-            <input type="text" id="name" name="name" required>
 
-            <label for="studentId">Student ID:</label>
-            <input type="text" id="studentId" name="studentId" required>
+<div class="container">
+    <h2>Student Personal Profile</h2>
 
-            <label for="program">Program:</label>
-            <input type="text" id="program" name="program" required>
+    <form action="ProfileServlet" method="post">
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+        <label>Full Name</label>
+        <input type="text" name="name" required>
 
-            <label for="hobbies">Hobbies:</label>
-            <textarea id="hobbies" name="hobbies"></textarea>
+        <label>Student ID</label>
+        <input type="text" name="studentID" required>
 
-            <label for="intro">Self Introduction:</label>
-            <textarea id="intro" name="intro"></textarea>
+        <label>Program</label>
+        <input type="text" name="program" required>
 
-            <button type="submit">Submit</button>
-        </form>
-    </div>
+        <label>Email</label>
+        <input type="email" name="email" required>
+
+        <label>Hobbies</label>
+        <input type="text" name="hobbies">
+
+        <label>Self Introduction</label>
+        <textarea name="intro" rows="4"></textarea>
+
+        <button type="submit">Submit Profile</button>
+
+    </form>
+</div>
+
 </body>
 </html>
